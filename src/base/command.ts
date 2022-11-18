@@ -6,16 +6,22 @@ export interface CommandInitOptions {
 }
 
 export enum CommandEvents {
-    RegisteredButton,
-    OwnedButtonClicked,
-    RegisterSelectMenu
+    RegisteredButton ="RegisteredButton",
+    OwnedButtonClicked = "OwnedButtonClicked",
+    RegisterSelectMenu = "RegisterSelectMenu",
+    OwnedSelectMenuAnwsered = "OwnedSelectMenuAnwsered",
+    RegisteredModal = "RegisteredModal",
+    OwnedModalSubmited = "OwnedModalSubmited"
 }
 
 export default class Command {
     private callbacks = {
-        "RegisterButton": [],
+        "RegisteredButton": [],
         "OwnedButtonClicked": [],
         "RegisterSelectMenu": [],
+        "OwnedSelectMenuAnwsered": [],
+        "RegisteredModal": [],
+        "OwnedModalSubmited": []
     };
     public CommandName: string;
     public HelpDescription: string;
@@ -33,11 +39,12 @@ export default class Command {
         //@ts-ignore
         let FunctionExec = this.callbacks[event.toString()];
         for (let i = 0; i < FunctionExec.length; i++) {
-            await FunctionExec(Args);
+            await FunctionExec[i](...Args);
         }
     }
 
     public on(event: CommandEvents, callback: CallableFunction) {
+        console.log(event.toString());
         //@ts-ignore
         this.callbacks[event.toString()].push(callback);
         return;

@@ -1,6 +1,6 @@
 node_modules
 out
-tconfig.ini
+config.ini
 botrightint
 package-lock.json
 Makefile

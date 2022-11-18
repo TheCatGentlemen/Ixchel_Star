@@ -9,7 +9,7 @@
         "module": "commonjs",
         "preserveConstEnums": true,
         "removeComments": true,
-        "sourceMap": true
+        "sourceMap": false
     },
 
     "include": ["src/**/*"]
