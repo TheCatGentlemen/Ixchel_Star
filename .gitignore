@@ -1,0 +1,6 @@
+node_modules
+out
+tconfig.ini
+botrightint
+package-lock.json
+Makefile
